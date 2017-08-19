@@ -1,11 +1,16 @@
 var returnVal = function(className) {
-	"exports.__esModule = true;" +
-	"exports.default = function () {function "+ className +"() {} };"
+  "exports.__esModule = true;" +
+  "var " + className + " = function () {function " + className + "() {} };" +
+    "exports[" + className + "] = " + className + ";"
+  "exports.default = " + className + ";"
 }
 
-module.exports.pitch = function(ctx) {
-	var splitPath = ctx.split('/');
-	var className = splitPath[splitPath.length - 1].split('.')[0];
-	this.cacheable();
-	return returnVal(className);
+var getClassName = function(filePath) {
+  var splitPath = filePath.split('/');
+  var className = splitPath[splitPath.length - 1].split('.')[0];
+}
+
+module.exports.pitch = function(filePath) {
+  this.cacheable();
+  return returnVal(getClassName(filePath));
 };

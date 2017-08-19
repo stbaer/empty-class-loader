@@ -1,5 +1,5 @@
 {
-  "name": "null-loader-custom",
+  "name": "empty-class-loader",
   "version": "0.0.1",
   "description": "A loader that returns an empty class.",
   "main": "index.js",
